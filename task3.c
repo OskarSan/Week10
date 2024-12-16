@@ -15,11 +15,11 @@ int main(int argc, char *argv[]) {
         printf("Fork failed\n");
         exit(1);
     } else if (pid == 0) {
-        printf("Child process %d created\n", pid);
         execvp(argv[1], &argv[1]);
         perror("execvp");
         exit(1);
     } else {
+        printf("Child process %d created\n", pid);
         int status;
         waitpid(pid, &status, 0);
         printf("Child process %d exited with status %d\n", pid, status);
